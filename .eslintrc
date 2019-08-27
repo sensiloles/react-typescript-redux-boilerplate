@@ -1,0 +1,87 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "jsx": true,
+    "tsx": true,
+    "useJSXTextNode": true
+  },
+  "env": {
+    "browser": true,
+    "jest/globals": true
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "react-hooks",
+    "jest",
+    "react",
+    "jsx-a11y",
+    "import",
+    "prettier"
+  ],
+  "extends": [
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/typescript",
+    "prettier"
+  ],
+  "settings": {
+    "import/extensions": ["js", "jsx", "ts", "tsx"],
+    "import/parsers": {
+      "@typescript-eslint/parser": ["ts", "tsx"]
+    },
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": ["js", "jsx", "ts", "tsx"]
+      },
+      "eslint-import-resolver-typescript": true
+    }
+  },
+  "rules": {
+    "max-len": ["error", { "code": 100 }],
+    "indent": "off",
+    "no-console": "off",
+    "@typescript-eslint/indent": ["off"],
+    "@typescript-eslint/explicit-function-return-type": ["off", { "allowExpressions": true }],
+    "@typescript-eslint/no-explicit-any": ["off"],
+    "comma-dangle": 0,
+    "@typescript-eslint/camelcase": ["off"],
+    "no-restricted-syntax": 1,
+    "new-cap": 1,
+    "no-continue": 1,
+    "no-underscore-dangle": 1,
+    "global-require": 1,
+    "react/no-multi-comp": 1,
+    "react/jsx-filename-extension": 0,
+    "import/no-unresolved": 1,
+    "import/prefer-default-export": 1,
+    "import/extensions": 1,
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+    "no-return-assign": 1,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/interactive-supports-focus": 0,
+    "prettier/prettier": ["error"],
+    "no-shadow": "off"
+  },
+  "globals": {
+    "document": false,
+    "window": false,
+    "HTMLInputElement": false,
+    "HTMLDivElement": false
+  },
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    },
+    {
+      "files": ["**/*.tsx"],
+      "rules": {
+        "react/prop-types": "off"
+      }
+    }
+  ]
+}

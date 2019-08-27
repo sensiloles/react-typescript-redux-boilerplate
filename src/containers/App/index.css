@@ -1,0 +1,42 @@
+.nav-bar {
+  background-color: rgb(100, 100, 112);
+  color: white;
+  padding: 20px 0;
+  font-size: 20px;
+}
+
+.nav-bar a {
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding-left: 10px;
+}
+
+.nav-bar a:visited {
+  color: white;
+}
+
+.nav-bar a:hover {
+  color: rgb(173, 152, 152);
+}
+
+.home-page {
+  width: 500px;
+  margin: 50px auto;
+  font-size: 30px;
+  text-align: center;
+}
+
+.counter {
+  width: 500px;
+  margin: 50px auto;
+  font-size: 70px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 100px;
+}
+
+.counter>button {
+  font-size: 70px;
+}
