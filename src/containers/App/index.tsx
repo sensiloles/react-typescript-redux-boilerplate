@@ -10,7 +10,7 @@ interface AppProps {
   history: History;
 }
 
-const App = ({ history }: AppProps) => {
+const App = ({ history }: AppProps): React.ReactComponentElement<'div'> => {
   return (
     <ConnectedRouter history={history}>
       <NavBar />

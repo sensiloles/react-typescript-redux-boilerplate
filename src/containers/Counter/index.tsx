@@ -1,9 +1,9 @@
 import React, { Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { increaseCount, decreaseCount } from '../../actions';
-import { Store, ActionProps } from '../../types';
+import { ApplicationState, ActionProps } from '../../types';
 
-const Counter = (props: ActionProps & Store) => {
+const Counter = (props: ActionProps & ApplicationState): React.ReactComponentElement<'div'> => {
   const { increaseCount, decreaseCount, counter } = props;
 
   return (
@@ -19,15 +19,15 @@ const Counter = (props: ActionProps & Store) => {
   );
 };
 
-const mapStateToProps = (store: Store) => {
+const mapStateToProps = (store: ApplicationState): ApplicationState => {
   return {
     counter: store.counter
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<any>): ActionProps => ({
-  increaseCount: () => dispatch(increaseCount()),
-  decreaseCount: () => dispatch(decreaseCount())
+  increaseCount: (): void => dispatch(increaseCount()),
+  decreaseCount: (): void => dispatch(decreaseCount())
 });
 
 export default connect(

@@ -8,7 +8,7 @@ const routes = (
       <Route
         exact
         path="/"
-        render={() => (
+        render={(): React.ReactComponentElement<'div'> => (
           <div className="home-page">
             <p>Главная страница</p>
           </div>

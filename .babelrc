@@ -5,7 +5,6 @@
     "@babel/plugin-transform-arrow-functions",
     "@babel/plugin-proposal-numeric-separator",
     "@babel/proposal-class-properties",
-    "@babel/proposal-object-rest-spread",
-    "react-hot-loader/babel"
+    "@babel/proposal-object-rest-spread"
   ]
 }

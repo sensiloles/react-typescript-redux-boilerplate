@@ -1,15 +1,16 @@
 import { createBrowserHistory } from 'history';
 import logger from 'redux-logger';
-import { applyMiddleware, compose, createStore } from 'redux';
+import { applyMiddleware, compose, createStore, Store } from 'redux';
 import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
 import rootReducer from '../reducers/RootReducer';
 import rootSaga from '../sagas';
+import { ApplicationState } from '../types';
 
 export const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
 
-export default function configureStore(preloadedState?: any) {
+export default function configureStore(preloadedState?: any): Store<ApplicationState> {
   let middleware = [sagaMiddleware, routerMiddleware(history)];
   if (process.env.NODE_ENV !== 'production') {
     middleware = [...middleware, logger];
@@ -23,9 +24,8 @@ export default function configureStore(preloadedState?: any) {
 
   sagaMiddleware.run(rootSaga);
 
-  const anyModule = module as any;
-  if (anyModule) {
-    anyModule.hot.accept('../reducers/RootReducer.ts', () => {
+  if ((module as any).hot && process.env.NODE_ENV !== 'production') {
+    (module as any).hot.accept('../reducers/RootReducer.ts', (): void => {
       store.replaceReducer(rootReducer(history));
     });
   }

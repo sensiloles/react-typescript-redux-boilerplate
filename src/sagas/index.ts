@@ -3,8 +3,10 @@ import { SagaIterator } from 'redux-saga';
 import { INCREMENT, DECREMENT } from '../constants';
 import { ActionTypes } from '../types';
 
-function* showAction(action: ActionTypes) {
-  yield console.log(action);
+function* showAction(action: ActionTypes): SagaIterator {
+  const message = yield call((): ActionTypes => action);
+
+  console.log(message);
 }
 
 function* watchCounter(): SagaIterator {

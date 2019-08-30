@@ -7,7 +7,7 @@ import configureStore, { history } from './store/configureStore';
 
 const store = configureStore();
 
-const render = () => {
+const render = (): void => {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
@@ -20,9 +20,8 @@ const render = () => {
 
 render();
 
-const anyModule = module as any;
-if (anyModule) {
-  anyModule.hot.accept('./containers/App', () => {
+if ((module as any).hot && process.env.NODE_ENV !== 'production') {
+  (module as any).hot.accept('./containers/App', (): void => {
     render();
   });
 }

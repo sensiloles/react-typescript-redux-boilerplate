@@ -8,7 +8,7 @@ export interface DecreaseCount {
   type: typeof DECREMENT;
 }
 
-export interface Store {
+export interface ApplicationState {
   counter: number;
 }
 

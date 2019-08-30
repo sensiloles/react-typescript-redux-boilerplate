@@ -1,10 +1,10 @@
-import { connectRouter } from 'connected-react-router';
-import { combineReducers } from 'redux';
+import { connectRouter, RouterState } from 'connected-react-router';
+import { combineReducers, Reducer, AnyAction } from 'redux';
 import { History } from 'history';
 import { INCREMENT, DECREMENT } from '../constants';
 import { ActionTypes } from '../types';
 
-function counter(state: number = 0, action: ActionTypes) {
+function counter(state = 0, action: ActionTypes): number {
   switch (action.type) {
     case INCREMENT:
       return state + 1;
@@ -15,7 +15,9 @@ function counter(state: number = 0, action: ActionTypes) {
   }
 }
 
-const rootReducer = (history: History) =>
+const rootReducer = (
+  history: History
+): Reducer<{ router: RouterState; counter: number }, AnyAction> =>
   combineReducers({
     router: connectRouter(history),
     counter
