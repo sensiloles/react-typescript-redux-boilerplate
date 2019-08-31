@@ -22,9 +22,8 @@ module.exports = {
     filename: isProduction ? '[contenthash].js' : '[hash].js',
     chunkFilename: isProduction ? '[name].[contenthash].js' : '[name].[hash].js'
   },
-  target: 'web',
   resolve: {
-    extensions: ['.js', '.ts', '.tsx'],
+    extensions: ['.ts', '.tsx', '.js', 'jsx', '.json'],
     mainFields: ['module', 'browser', 'main'],
     alias: {
       'react-dom': '@hot-loader/react-dom'
@@ -48,13 +47,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.(ts|js)x?$/,
         exclude: /(node_modules)/,
         include: sourcePath,
         use: [
           !isProduction && {
             loader: 'babel-loader',
             options: {
+              cacheDirectory: true,
               plugins: ['react-hot-loader/babel']
             }
           },
@@ -121,7 +121,7 @@ module.exports = {
   },
   plugins: [
     new webpack.EnvironmentPlugin({
-      NODE_ENV: 'production',
+      NODE_ENV: 'development',
       DEBUG: false
     }),
     new CleanWebpackPlugin(),

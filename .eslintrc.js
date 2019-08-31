@@ -25,6 +25,7 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     '@typescript-eslint/indent': [2, 2],
     'react/jsx-props-no-spreading': [0],
-    'no-shadow': [1]
+    'no-shadow': [1],
+    '@typescript-eslint/no-explicit-any': [1]
   }
 };

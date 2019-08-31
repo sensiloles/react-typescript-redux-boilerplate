@@ -1,7 +1,7 @@
 import React from 'react';
 import { History } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
-import { hot } from 'react-hot-loader/root';
+import { hot } from 'react-hot-loader';
 import routes from '../../routes';
 import NavBar from '../../components/NavBar';
 import './index.css';
@@ -19,4 +19,4 @@ const App = ({ history }: AppProps): React.ReactComponentElement<'div'> => {
   );
 };
 
-export default hot(App);
+export default hot(module)(App);
